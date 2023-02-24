@@ -1,3 +1,5 @@
 import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-export type TokyoGLTF = GLTF;
+export type TokyoGLTF = GLTF & {
+	nodes: THREE.Mesh[];
+};

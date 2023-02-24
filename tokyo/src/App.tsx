@@ -1,13 +1,13 @@
 import { Canvas } from "@react-three/fiber";
 import { Tokyo } from "./components/Tokyo";
-import { OrbitControls, Sky } from "@react-three/drei";
+import { OrbitControls, ScrollControls, Sky } from "@react-three/drei";
 
 function App() {
 	return (
 		<div className="App">
 			<Canvas shadows camera={{ position: [0, 0, 10] }}>
 				<color args={["#4a2001"]} attach="background" />
-				<OrbitControls />
+				{/* <OrbitControls /> */}
 				<ambientLight intensity={0.03} />
 				<spotLight
 					angle={0.14}
@@ -20,7 +20,9 @@ function App() {
 				/>
 				<fog attach="fog" args={["#ff5020", 5, 18]} />
 				<Sky sunPosition={[2, 0.4, 10]} />
-				<Tokyo scale={0.02} position={[0, 2.5, 0]} />
+				<ScrollControls pages={3}>
+					<Tokyo scale={0.02} position={[0, 2.5, 0]} />
+				</ScrollControls>
 			</Canvas>
 		</div>
 	);
