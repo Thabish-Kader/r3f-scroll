@@ -18,7 +18,6 @@ export const Tokyo = ({ ...props }) => {
 		() => void (actions["Take 001"]!.play().paused = true),
 		[actions]
 	);
-
 	useFrame((state, delta) => {
 		const action = actions["Take 001"];
 		// The offset is between 0 and 1, you can apply it to your models any way you like
@@ -36,6 +35,5 @@ export const Tokyo = ({ ...props }) => {
 		);
 		state.camera.lookAt(0, 0, 0);
 	});
-
 	return <primitive object={scene} {...props} />;
 };

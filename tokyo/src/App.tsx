@@ -7,7 +7,7 @@ function App() {
 		<div className="App">
 			<Canvas shadows camera={{ position: [0, 0, 10] }}>
 				<color args={["#4a2001"]} attach="background" />
-				{/* <OrbitControls /> */}
+				<OrbitControls />
 				<ambientLight intensity={0.03} />
 				<spotLight
 					angle={0.14}
