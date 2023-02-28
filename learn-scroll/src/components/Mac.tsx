@@ -6,6 +6,7 @@ import { forwardRef } from "react";
 type Props = {
 	children?: React.ReactNode;
 	texture?: THREE.Texture;
+	scale: number;
 };
 
 export const Mac = forwardRef<THREE.Group, Props>(
