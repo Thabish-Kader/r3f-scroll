@@ -1,11 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Tokyo } from "./components/Tokyo";
-import {
-	OrbitControls,
-	ScrollControls,
-	Sky,
-	useTexture,
-} from "@react-three/drei";
+import { OrbitControls, ScrollControls } from "@react-three/drei";
 import { Mac } from "./components/Mac";
 import useRefs from "react-use-refs";
 import { Composition } from "./components/Composition";
@@ -22,8 +17,10 @@ function App() {
 				dpr={[1, 2]}
 				camera={{ position: [0, -3.2, 40], fov: 12 }}
 			>
+				<ScrollControls pages={5}>
+					<Composition />
+				</ScrollControls>
 				<OrbitControls />
-				<Composition />
 				<ambientLight />
 			</Canvas>
 		</div>

@@ -1,22 +1,19 @@
 import { useGLTF } from "@react-three/drei";
 import { MacGLTF } from "../typings";
-import { useControls } from "leva";
 import { forwardRef } from "react";
 
 type Props = {
 	children?: React.ReactNode;
 	texture?: THREE.Texture;
 	scale: number;
+	rotation?: THREE.Euler;
+	position?: THREE.Vector3;
 };
 
 export const Mac = forwardRef<THREE.Group, Props>(
 	({ children, texture, ...props }, ref) => {
 		const { nodes, materials } = useGLTF("/mac.glb") as MacGLTF;
-		const { rotation } = useControls({
-			rotation: {
-				value: { x: -1.56, y: 3.09, z: 1.45 },
-			},
-		});
+
 		return (
 			<group {...props} dispose={null}>
 				<group
