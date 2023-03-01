@@ -2,26 +2,14 @@ import { useGLTF } from "@react-three/drei";
 import React from "react";
 import { JordanGLTF } from "../typings";
 import { useControls } from "leva";
+import { useThree } from "@react-three/fiber";
 
 // Source : https://sketchfab.com/3d-models/air-jordan-1-a4b434181fbb48008ad460722fd53725
-export const Jordan = () => {
+export const Jordan = ({ ...props }) => {
 	const { nodes, materials } = useGLTF("/air_jordan_1.glb") as JordanGLTF;
-	const { position, rotation } = useControls({
-		position: {
-			value: { x: 0, y: 0, z: 0 },
-			step: 0.5,
-		},
-		rotation: {
-			value: { x: -1.5, y: 0, z: 0 },
-			step: 0.5,
-		},
-	});
+	const { width, height } = useThree((state) => state.viewport);
 	return (
-		<group
-			scale={7}
-			position={[position.x, position.y, position.z]}
-			rotation={[rotation.x, rotation.y, rotation.z]}
-		>
+		<group scale={width / 0.9} rotation-x={[-Math.PI * 0.5]} {...props}>
 			<mesh
 				geometry={nodes.shoe_shoe_0.geometry}
 				material={materials.shoe}
