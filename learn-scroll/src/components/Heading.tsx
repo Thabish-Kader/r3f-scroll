@@ -22,8 +22,8 @@ export const Heading = forwardRef<HTMLDivElement, Props>(
 				{...props}
 			>
 				<div className="tag">{tag}</div>
-				<h1>{perf}</h1>
-				<h2>{exp}</h2>
+				<h1 className="myh1">{perf}</h1>
+				<h2 className="myh2">{exp}</h2>
 			</Html>
 		);
 	}

@@ -6,6 +6,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { useControls } from "leva";
 import { Text } from "./Text";
+import { Heading } from "./Heading";
 
 export const Composition = ({ ...props }) => {
 	const scroll = useScroll();
@@ -27,7 +28,7 @@ export const Composition = ({ ...props }) => {
 		mbp14.current.rotation.x = Math.PI - r;
 		group.current.rotation.y = -Math.PI - r * 2.5;
 		left.current?.classList.toggle("show", r === 1);
-		right.current?.classList.toggle("show", r === 1);
+		right.current?.classList.toggle("appear", r === 1);
 	});
 	return (
 		<>
@@ -71,15 +72,14 @@ export const Composition = ({ ...props }) => {
 					scale={width / 77}
 					rotation={new THREE.Euler(0, Math.PI, 0)}
 					position={new THREE.Vector3(0, 0, -width / 2.625)}
-				>
-					<Text
-						ref={right}
-						position={new THREE.Vector3(15, 10, 0)}
-						tag="up to"
-						perf="7x"
-						exp={`faster\ngraphics\nperformance²`}
-					/>
-				</Mac>
+				></Mac>
+				<Heading
+					ref={right}
+					position={new THREE.Vector3(0, 5, 0)}
+					tag="up to"
+					perf="13x"
+					exp={`faster\ngraphics\nperformance²`}
+				/>
 			</group>
 		</>
 	);
