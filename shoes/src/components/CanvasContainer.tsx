@@ -1,15 +1,33 @@
 import { Canvas } from "@react-three/fiber";
-import React from "react";
-import { BoxGeometry } from "three";
+import React, { useRef } from "react";
 import { Jordan } from "./Jordan";
-import { OrbitControls } from "@react-three/drei";
+import {
+	BakeShadows,
+	ContactShadows,
+	Environment,
+	Grid,
+	OrbitControls,
+	Plane,
+	Shadow,
+	useHelper,
+} from "@react-three/drei";
+import * as THREE from "three";
 
 export const CanvasContainer = () => {
 	return (
-		<Canvas>
+		<Canvas shadows>
+			<color args={["#e1e1e1"]} attach="background" />
 			<OrbitControls />
-			<ambientLight />
 			<Jordan />
+			<Environment preset="city" />
+			<Plane
+				receiveShadow
+				rotation={[-Math.PI / 2, 0, 0]}
+				position={[0, -0.45, 0]}
+				args={[1000, 1000]}
+			>
+				<meshStandardMaterial attach="material" color="grey" />
+			</Plane>
 		</Canvas>
 	);
 };
