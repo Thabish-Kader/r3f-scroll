@@ -1,15 +1,13 @@
 import { Canvas } from "@react-three/fiber";
-import { Tokyo } from "./components/Tokyo";
-import { OrbitControls, ScrollControls } from "@react-three/drei";
-import { Mac } from "./components/Mac";
-import useRefs from "react-use-refs";
+
+import { Html, OrbitControls, ScrollControls } from "@react-three/drei";
+
 import { Composition } from "./components/Composition";
+import { useEffect, useRef } from "react";
+import { ScrollDetector } from "./ScrollDetector";
+// prints the current scroll value (initially 0)
 
 function App() {
-	// const [textureRed, textureBlue] = useTexture([
-	// 	"/Chroma Red.jpg",
-	// 	"/Chroma Blue.jpg",
-	// ]);
 	return (
 		<div className="App">
 			<Canvas
@@ -20,7 +18,8 @@ function App() {
 				<ScrollControls pages={5}>
 					<Composition />
 				</ScrollControls>
-				<OrbitControls />
+				{/* <OrbitControls /> */}
+
 				<ambientLight />
 			</Canvas>
 		</div>

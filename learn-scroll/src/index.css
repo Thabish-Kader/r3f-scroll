@@ -7,3 +7,117 @@
 	height: 100vh;
 	width: 100vw;
 }
+
+.myText {
+	position: fixed;
+	top: 100px;
+}
+
+.hidden {
+	opacity: 0;
+	transition: opacity 0.5s ease-out;
+}
+
+.visible {
+	opacity: 1;
+}
+
+.data {
+	transition: opacity 0.5s cubic-bezier(0.61, 1, 0.88, 1);
+	opacity: 0;
+	position: relative;
+	display: grid;
+	grid-template:
+		"label ."
+		"tag expl";
+	align-items: end;
+	line-height: 1em;
+	gap: 1em;
+	overflow: hidden;
+	pointer-events: none;
+	height: 12.5vw;
+}
+
+.data.show {
+	opacity: 1;
+}
+
+.data > *:nth-child(1) {
+	transition-delay: 0s;
+	transform: matrix(1, 0, 0, 1, 0, 36);
+}
+
+.data > *:nth-child(2) {
+	transition-delay: 0.1s;
+	transform: matrix(1, 0, 0, 1, 0, 119);
+}
+
+.data > *:nth-child(3) {
+	transition-delay: 0.2s;
+	transform: matrix(1, 0, 0, 1, 0, 78);
+}
+
+.data > * {
+	transition: transform 0.5s cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.data.show > * {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.data > div {
+	padding-top: 0.5em;
+	width: auto;
+	grid-area: label;
+	position: relative;
+	font-size: 1.5vw;
+}
+
+.data > div::after {
+	transition: width 0.7s cubic-bezier(0.61, 1, 0.88, 1);
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0vw;
+	height: 4px;
+	background: black;
+	z-index: 9999;
+}
+
+.data.show > div::after {
+	width: 3.5vw;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	font-weight: 500;
+	font-size: 50px;
+	line-height: 0.8em;
+	letter-spacing: -0.05em;
+}
+
+.data > h1 {
+	grid-area: tag;
+}
+
+.data > h2 {
+	grid-area: expl;
+	margin: 0;
+	padding: 0;
+	font-weight: 300;
+	font-size: 1vw;
+	line-height: 1.25em;
+}
+
+/* heading  */
+.heading {
+	position: relative;
+}
+
+.heading > div {
+	position: absolute;
+	top: 5;
+	font-size: 50px;
+}

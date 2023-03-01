@@ -12,6 +12,7 @@
     "@react-three/drei": "^9.56.26",
     "@react-three/fiber": "^8.11.5",
     "leva": "^0.9.34",
+    "patch-package": "^6.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-use-refs": "^1.0.1",

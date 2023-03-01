@@ -1,23 +1,18 @@
 import React, { useRef } from "react";
 import { Mac } from "./Mac";
-import { useScroll, useTexture } from "@react-three/drei";
+import { Html, useScroll, useTexture } from "@react-three/drei";
 import useRefs from "react-use-refs";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { useControls } from "leva";
-const rsqw = (t, delta = 0.1, a = 1, f = 1 / (2 * Math.PI)) =>
-	(a / Math.atan(1 / delta)) *
-	Math.atan(Math.sin(2 * Math.PI * t * f) / delta);
+import { Text } from "./Text";
+
 export const Composition = ({ ...props }) => {
-	const { rotation } = useControls({
-		rotation: {
-			x: 0,
-			step: 0.5,
-		},
-	});
 	const scroll = useScroll();
-	const [group, mbp16, mbp14, left, right] = useRefs<THREE.Group>(null!);
+	const [group, mbp16, mbp14] = useRefs<THREE.Group>(null!);
 	const [stripLight, fillLight] = useRefs<THREE.SpotLight>(null);
+	const [left, right] = useRefs<HTMLDivElement>(null!);
+
 	const keyLight = useRef<THREE.DirectionalLight>(null);
 	const [textureRed, textureBlue] = useTexture([
 		"/Chroma Red.jpg",
@@ -26,11 +21,13 @@ export const Composition = ({ ...props }) => {
 	const { width, height } = useThree((state) => state.viewport);
 
 	useFrame((state, delta) => {
-		const r1 = scroll.range(0, 1);
+		const r = scroll.range(0, 1);
 
-		mbp16.current.rotation.x = Math.PI - r1 * 1.9;
-		mbp14.current.rotation.x = Math.PI - r1;
-		group.current.rotation.y = -Math.PI - r1 * 2.5;
+		mbp16.current.rotation.x = Math.PI - r * 1.9;
+		mbp14.current.rotation.x = Math.PI - r;
+		group.current.rotation.y = -Math.PI - r * 2.5;
+		left.current?.classList.toggle("show", r === 1);
+		right.current?.classList.toggle("show", r === 1);
 	});
 	return (
 		<>
@@ -58,14 +55,31 @@ export const Composition = ({ ...props }) => {
 					intensity={2}
 					distance={width * 3}
 				/>
-				<Mac ref={mbp16} texture={textureRed} scale={width / 67} />;
+				<Mac ref={mbp16} texture={textureRed} scale={width / 67}>
+					<Text
+						ref={left}
+						position={new THREE.Vector3(16, 5, 0)}
+						tag="up to"
+						perf="13x"
+						exp={`faster\ngraphics\nperformance²`}
+					/>
+				</Mac>
+
 				<Mac
 					ref={mbp14}
 					texture={textureBlue}
-					scale={width / 67}
+					scale={width / 77}
 					rotation={new THREE.Euler(0, Math.PI, 0)}
 					position={new THREE.Vector3(0, 0, -width / 2.625)}
-				/>
+				>
+					<Text
+						ref={right}
+						position={new THREE.Vector3(15, 10, 0)}
+						tag="up to"
+						perf="7x"
+						exp={`faster\ngraphics\nperformance²`}
+					/>
+				</Mac>
 			</group>
 		</>
 	);
