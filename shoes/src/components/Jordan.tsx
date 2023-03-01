@@ -1,4 +1,4 @@
-import { useGLTF, useHelper } from "@react-three/drei";
+import { Plane, useGLTF, useHelper } from "@react-three/drei";
 import React, { useRef } from "react";
 import { JordanGLTF } from "../typings";
 import { useControls } from "leva";
@@ -10,6 +10,7 @@ export const Jordan = ({ ...props }) => {
 	const { nodes, materials } = useGLTF("/air_jordan_1.glb") as JordanGLTF;
 	const { width, height } = useThree((state) => state.viewport);
 	const pointLight = useRef(null!);
+	// debug
 	// useHelper(pointLight, THREE.DirectionalLightHelper, 1);
 	// const { position } = useControls({
 	// 	position: {
@@ -19,6 +20,8 @@ export const Jordan = ({ ...props }) => {
 	// 		value: { x: 0, y: 0, z: 0 },
 	// 	},
 	// });
+	const { camera } = useThree();
+	console.log(width / 1000);
 	return (
 		<>
 			<directionalLight
@@ -47,6 +50,14 @@ export const Jordan = ({ ...props }) => {
 					material={materials.shoelace}
 				/>
 			</group>
+			<Plane
+				receiveShadow
+				rotation={[-Math.PI / 2, 0, 0]}
+				position={[0, width * -0.03, 0]}
+				args={[1000, 1000]}
+			>
+				<meshStandardMaterial attach="material" color="grey" />
+			</Plane>
 		</>
 	);
 };
