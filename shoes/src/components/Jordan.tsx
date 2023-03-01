@@ -1,8 +1,8 @@
-import { Plane, useGLTF, useHelper } from "@react-three/drei";
+import { Plane, useGLTF, useHelper, useScroll } from "@react-three/drei";
 import React, { useRef } from "react";
 import { JordanGLTF } from "../typings";
 import { useControls } from "leva";
-import { useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 // Source : https://sketchfab.com/3d-models/air-jordan-1-a4b434181fbb48008ad460722fd53725
@@ -10,6 +10,9 @@ export const Jordan = ({ ...props }) => {
 	const { nodes, materials } = useGLTF("/air_jordan_1.glb") as JordanGLTF;
 	const { width, height } = useThree((state) => state.viewport);
 	const pointLight = useRef(null!);
+
+	useFrame((state) => {});
+
 	// debug
 	// useHelper(pointLight, THREE.DirectionalLightHelper, 1);
 	// const { position } = useControls({
@@ -20,8 +23,7 @@ export const Jordan = ({ ...props }) => {
 	// 		value: { x: 0, y: 0, z: 0 },
 	// 	},
 	// });
-	const { camera } = useThree();
-	console.log(width / 1000);
+
 	return (
 		<>
 			<directionalLight
