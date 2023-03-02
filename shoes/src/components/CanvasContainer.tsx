@@ -2,13 +2,17 @@ import { Canvas } from "@react-three/fiber";
 
 import { Jordan } from "./Jordan";
 import {
+	CameraControls,
 	Environment,
 	OrbitControls,
 	Plane,
 	ScrollControls,
 } from "@react-three/drei";
+import { useRef } from "react";
 
 export const CanvasContainer = () => {
+	const cameraControlsRef = useRef<CameraControls | null>(null);
+
 	return (
 		<Canvas
 			camera={{
@@ -19,9 +23,10 @@ export const CanvasContainer = () => {
 			shadows
 		>
 			<color args={["#e1e1e1"]} attach="background" />
-			{/* <OrbitControls /> */}
+			<OrbitControls />
+			<CameraControls ref={cameraControlsRef} />
 			<ScrollControls pages={3}>
-				<Jordan />
+				<Jordan cameraContolsRef={cameraControlsRef} />
 			</ScrollControls>
 			<Environment preset="city" />
 		</Canvas>
