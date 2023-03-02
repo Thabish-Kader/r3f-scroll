@@ -60,18 +60,7 @@ export const Jordan = ({ cameraContolsRef, ...props }: Props) => {
 				duration: 2,
 			});
 	});
-	// debug
-	// useHelper(pointLight, THREE.DirectionalLightHelper, 1);
-	// const { position } = useControls({
-	// 	position: {
-	// 		value: { x: 0, y: 0, z: 0 },
-	// 	},
-	// 	rotation: {
-	// 		value: { x: 0, y: 0, z: 0 },
-	// 	},
-	// });
-	// const { camera } = useThree();
-	// console.log(camera.position);
+
 	return (
 		<>
 			<directionalLight

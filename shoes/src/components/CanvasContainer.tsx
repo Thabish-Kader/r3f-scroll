@@ -10,6 +10,7 @@ import {
 	ScrollControls,
 } from "@react-three/drei";
 import { useRef } from "react";
+import { Annotation } from "./Annotation";
 
 export const CanvasContainer = () => {
 	const cameraControlsRef = useRef<CameraControls | null>(null);
@@ -28,6 +29,7 @@ export const CanvasContainer = () => {
 			{/* <CameraControls ref={cameraControlsRef} /> */}
 			<ScrollControls pages={3}>
 				<Jordan cameraContolsRef={cameraControlsRef} />
+				<Annotation />
 			</ScrollControls>
 			<Environment preset="city" />
 		</Canvas>
