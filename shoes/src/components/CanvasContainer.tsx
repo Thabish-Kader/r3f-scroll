@@ -6,6 +6,7 @@ import {
 	Environment,
 	OrbitControls,
 	Plane,
+	PresentationControls,
 	ScrollControls,
 } from "@react-three/drei";
 import { useRef } from "react";
@@ -23,7 +24,7 @@ export const CanvasContainer = () => {
 			shadows
 		>
 			<color args={["#e1e1e1"]} attach="background" />
-			<OrbitControls />
+
 			<CameraControls ref={cameraControlsRef} />
 			<ScrollControls pages={3}>
 				<Jordan cameraContolsRef={cameraControlsRef} />

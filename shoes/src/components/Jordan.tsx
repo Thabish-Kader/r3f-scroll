@@ -15,53 +15,68 @@ type Props = {
 	cameraContolsRef: React.MutableRefObject<CameraControls | null>;
 };
 
+const position1 = {
+	x: -3.339276677766927,
+	y: 0.5852984754823405,
+	z: -0.7001722927431063,
+};
+
+const position2 = {
+	x: 3,
+	y: 1,
+	z: -10,
+};
+
+const position3 = {
+	x: 2.8341062745327106,
+	y: 1.281623190342407,
+	z: 3.5899559360291127,
+};
 // Source : https://sketchfab.com/3d-models/air-jordan-1-a4b434181fbb48008ad460722fd53725
 export const Jordan = ({ cameraContolsRef, ...props }: Props) => {
 	const { nodes, materials } = useGLTF("/air_jordan_1.glb") as JordanGLTF;
-	const { width, height } = useThree((state) => state.viewport);
+	const { width } = useThree((state) => state.viewport);
 	const pointLight = useRef(null!);
 	const scroll = useScroll();
 
-	const position1 = {
-		x: -3.339276677766927,
-		y: 0.5852984754823405,
-		z: -0.7001722927431063,
-	};
-
-	const position2 = {
-		x: 1.3267283090481237,
-		y: 0.6881011428835936,
-		z: -0.6900312697503127,
-	};
-
 	useFrame((state) => {
-		const offset = 1 - scroll.offset;
-		// if (offset === 1) {
-		// 	cameraContolsRef.current?.reset(true);
-		// }
-		// if (offset <= 0.9 && offset >= 0.85) {
-		// 	cameraContolsRef.current?.setLookAt(
-		// 		position1.x,
-		// 		position1.y,
-		// 		position1.z,
-		// 		1,
-		// 		0,
-		// 		1,
-		// 		true
-		// 	);
-		// }
-		if (offset <= 0.85 && offset >= 0.5) {
+		const offset = scroll.offset;
+		if (offset === 0) {
+			cameraContolsRef.current?.reset(true);
+		}
+		if (offset <= 0.3 && offset >= 0.1) {
+			cameraContolsRef.current?.setLookAt(
+				position1.x,
+				position1.y,
+				position1.z,
+				1,
+				0,
+				1,
+				true
+			);
+		}
+		if (offset <= 0.75 && offset >= 0.4) {
 			cameraContolsRef.current?.setLookAt(
 				position2.x,
 				position2.y,
 				(position2.z / width) * 2,
+				1,
+				1,
+				0,
+				true
+			);
+		}
+		if (offset <= 1 && offset >= 0.8) {
+			cameraContolsRef.current?.setLookAt(
+				position3.x,
+				position3.y,
+				position3.z,
 				0,
 				0,
 				0,
 				true
 			);
 		}
-		// console.log(offset);
 	});
 	// debug
 	// useHelper(pointLight, THREE.DirectionalLightHelper, 1);
