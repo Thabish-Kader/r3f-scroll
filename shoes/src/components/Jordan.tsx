@@ -1,15 +1,10 @@
-import {
-	CameraControls,
-	Plane,
-	useGLTF,
-	useHelper,
-	useScroll,
-} from "@react-three/drei";
+import { CameraControls, Plane, useGLTF, useScroll } from "@react-three/drei";
 import React, { useRef } from "react";
 import { JordanGLTF } from "../typings";
 import { useControls } from "leva";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
+import { gsap } from "gsap";
 
 type Props = {
 	cameraContolsRef: React.MutableRefObject<CameraControls | null>;
@@ -23,14 +18,14 @@ const position1 = {
 
 const position2 = {
 	x: 3,
-	y: 1,
-	z: -10,
+	y: 2,
+	z: -2,
 };
 
 const position3 = {
 	x: 2.8341062745327106,
 	y: 1.281623190342407,
-	z: 3.5899559360291127,
+	z: 4,
 };
 // Source : https://sketchfab.com/3d-models/air-jordan-1-a4b434181fbb48008ad460722fd53725
 export const Jordan = ({ cameraContolsRef, ...props }: Props) => {
@@ -41,42 +36,29 @@ export const Jordan = ({ cameraContolsRef, ...props }: Props) => {
 
 	useFrame((state) => {
 		const offset = scroll.offset;
-		if (offset === 0) {
-			cameraContolsRef.current?.reset(true);
-		}
-		if (offset <= 0.3 && offset >= 0.1) {
-			cameraContolsRef.current?.setLookAt(
-				position1.x,
-				position1.y,
-				position1.z,
-				1,
-				0,
-				1,
-				true
-			);
-		}
-		if (offset <= 0.75 && offset >= 0.4) {
-			cameraContolsRef.current?.setLookAt(
-				position2.x,
-				position2.y,
-				(position2.z / width) * 2,
-				1,
-				1,
-				0,
-				true
-			);
-		}
-		if (offset <= 1 && offset >= 0.8) {
-			cameraContolsRef.current?.setLookAt(
-				position3.x,
-				position3.y,
-				position3.z,
-				0,
-				0,
-				0,
-				true
-			);
-		}
+		const t1 = gsap.timeline();
+
+		if (offset >= 0.1 && offset <= 0.25)
+			t1.to(state.camera.position, {
+				x: position1.x,
+				y: position1.y,
+				z: position1.z,
+				duration: 2,
+			});
+		if (offset >= 0.3 && offset <= 0.5)
+			t1.to(state.camera.position, {
+				x: position2.x,
+				y: position2.y,
+				z: position2.z,
+				duration: 2,
+			});
+		if (offset >= 0.6 && offset <= 0.9)
+			t1.to(state.camera.position, {
+				x: position3.x,
+				y: position3.y,
+				z: position3.z,
+				duration: 2,
+			});
 	});
 	// debug
 	// useHelper(pointLight, THREE.DirectionalLightHelper, 1);
