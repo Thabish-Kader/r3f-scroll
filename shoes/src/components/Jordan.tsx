@@ -93,11 +93,7 @@ export const Jordan = ({ cameraContolsRef, ...props }: Props) => {
 					material={materials.shoelace}
 				/>
 			</group>
-			<Annotation
-				ref={text1}
-				heading="Comfort"
-				position={new THREE.Vector3(0, 0, 0)}
-			/>
+
 			<Plane
 				receiveShadow
 				rotation={[-Math.PI / 2, 0, 0]}
