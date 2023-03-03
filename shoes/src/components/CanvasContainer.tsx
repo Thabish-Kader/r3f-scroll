@@ -29,7 +29,6 @@ export const CanvasContainer = () => {
 			{/* <CameraControls ref={cameraControlsRef} /> */}
 			<ScrollControls pages={3}>
 				<Jordan cameraContolsRef={cameraControlsRef} />
-				<Annotation />
 			</ScrollControls>
 			<Environment preset="city" />
 		</Canvas>

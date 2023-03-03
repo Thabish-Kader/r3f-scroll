@@ -5,6 +5,7 @@ import { useControls } from "leva";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { gsap } from "gsap";
+import { Annotation } from "./Annotation";
 
 type Props = {
 	cameraContolsRef: React.MutableRefObject<CameraControls | null>;
@@ -31,20 +32,24 @@ const position3 = {
 export const Jordan = ({ cameraContolsRef, ...props }: Props) => {
 	const { nodes, materials } = useGLTF("/air_jordan_1.glb") as JordanGLTF;
 	const { width } = useThree((state) => state.viewport);
-	const pointLight = useRef(null!);
+	const text1 = useRef<HTMLDivElement>(null);
+	const text2 = useRef<HTMLDivElement>(null);
+	const text3 = useRef<HTMLDivElement>(null);
 	const scroll = useScroll();
 
 	useFrame((state) => {
 		const offset = scroll.offset;
 		const t1 = gsap.timeline();
 
-		if (offset >= 0.1 && offset <= 0.25)
+		if (offset >= 0.1 && offset <= 0.25) {
 			t1.to(state.camera.position, {
 				x: position1.x,
 				y: position1.y,
 				z: position1.z,
 				duration: 2,
 			});
+			text1.current?.classList.toggle("show");
+		}
 		if (offset >= 0.3 && offset <= 0.5)
 			t1.to(state.camera.position, {
 				x: position2.x,
@@ -65,7 +70,6 @@ export const Jordan = ({ cameraContolsRef, ...props }: Props) => {
 		<>
 			<directionalLight
 				castShadow
-				ref={pointLight}
 				position={[-2.38, 1.32, 0.74]}
 				intensity={5}
 			/>
@@ -89,6 +93,11 @@ export const Jordan = ({ cameraContolsRef, ...props }: Props) => {
 					material={materials.shoelace}
 				/>
 			</group>
+			<Annotation
+				ref={text1}
+				heading="Comfort"
+				position={new THREE.Vector3(0, 0, 0)}
+			/>
 			<Plane
 				receiveShadow
 				rotation={[-Math.PI / 2, 0, 0]}

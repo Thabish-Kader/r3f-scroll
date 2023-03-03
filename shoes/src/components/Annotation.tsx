@@ -1,17 +1,25 @@
 import { Html, useScroll } from "@react-three/drei";
-import React from "react";
+import React, { forwardRef } from "react";
 
-export const Annotation = () => {
-	const scrollData = useScroll();
-	return (
-		<Html portal={{ current: scrollData.fixed }}>
-			<div className="annotation">
-				<h1>Comfort</h1>
-				<p>
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-					Ipsa voluptatem itaque reiciendis veniam voluptatum totam
-				</p>
-			</div>
-		</Html>
-	);
+type Props = {
+	heading: string;
+	info?: string;
+	position?: THREE.Vector3;
 };
+
+export const Annotation = forwardRef<HTMLDivElement, Props>(
+	({ heading, info, ...props }, ref) => {
+		const scrollData = useScroll();
+		return (
+			<Html
+				ref={ref}
+				portal={{ current: scrollData.fixed }}
+				{...props}
+				className="annotation"
+			>
+				<h1>Comfort</h1>
+				<p>Luxury</p>
+			</Html>
+		);
+	}
+);
