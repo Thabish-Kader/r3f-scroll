@@ -24,7 +24,6 @@ export const CanvasContainer = () => {
 			}}
 			shadows
 		>
-			<color args={["#e1e1e1"]} attach="background" />
 			<OrbitControls enableZoom={false} />
 			{/* <CameraControls ref={cameraControlsRef} /> */}
 			<ScrollControls pages={3}>
