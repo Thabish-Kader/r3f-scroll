@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { CanvasContainer } from "./components/CanvasContainer";
 
 function App() {
