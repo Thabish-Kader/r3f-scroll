@@ -9,11 +9,15 @@ import {
 	PresentationControls,
 	ScrollControls,
 } from "@react-three/drei";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Annotation } from "./Annotation";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Scroller from "./Scroller";
+gsap.registerPlugin(ScrollTrigger);
 
 export const CanvasContainer = () => {
-	const cameraControlsRef = useRef<CameraControls | null>(null);
+	const shoes = useRef<THREE.Group>(null);
 
 	return (
 		<Canvas
@@ -27,7 +31,8 @@ export const CanvasContainer = () => {
 			<OrbitControls enableZoom={false} />
 			{/* <CameraControls ref={cameraControlsRef} /> */}
 			{/* <ScrollControls pages={3}> */}
-			<Jordan cameraContolsRef={cameraControlsRef} />
+			<Jordan ref={shoes} />
+			<Scroller />
 			{/* </ScrollControls> */}
 			<Environment preset="city" />
 		</Canvas>
