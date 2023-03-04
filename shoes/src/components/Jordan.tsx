@@ -37,34 +37,34 @@ export const Jordan = ({ cameraContolsRef, ...props }: Props) => {
 	const text3 = useRef<HTMLDivElement>(null);
 	const scroll = useScroll();
 
-	useFrame((state) => {
-		const offset = scroll.offset;
-		const t1 = gsap.timeline();
+	// useFrame((state) => {
+	// 	const offset = scroll.offset;
+	// 	const t1 = gsap.timeline();
 
-		if (offset >= 0.1 && offset <= 0.25) {
-			t1.to(state.camera.position, {
-				x: position1.x,
-				y: position1.y,
-				z: position1.z,
-				duration: 2,
-			});
-			text1.current?.classList.toggle("show");
-		}
-		if (offset >= 0.3 && offset <= 0.5)
-			t1.to(state.camera.position, {
-				x: position2.x,
-				y: position2.y,
-				z: position2.z,
-				duration: 2,
-			});
-		if (offset >= 0.6 && offset <= 0.9)
-			t1.to(state.camera.position, {
-				x: position3.x,
-				y: position3.y,
-				z: position3.z,
-				duration: 2,
-			});
-	});
+	// 	if (offset >= 0.1 && offset <= 0.25) {
+	// 		t1.to(state.camera.position, {
+	// 			x: position1.x,
+	// 			y: position1.y,
+	// 			z: position1.z,
+	// 			duration: 2,
+	// 		});
+	// 		text1.current?.classList.toggle("show");
+	// 	}
+	// 	if (offset >= 0.3 && offset <= 0.5)
+	// 		t1.to(state.camera.position, {
+	// 			x: position2.x,
+	// 			y: position2.y,
+	// 			z: position2.z,
+	// 			duration: 2,
+	// 		});
+	// 	if (offset >= 0.6 && offset <= 0.9)
+	// 		t1.to(state.camera.position, {
+	// 			x: position3.x,
+	// 			y: position3.y,
+	// 			z: position3.z,
+	// 			duration: 2,
+	// 		});
+	// });
 
 	return (
 		<>

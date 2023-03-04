@@ -26,9 +26,9 @@ export const CanvasContainer = () => {
 		>
 			<OrbitControls enableZoom={false} />
 			{/* <CameraControls ref={cameraControlsRef} /> */}
-			<ScrollControls pages={3}>
-				<Jordan cameraContolsRef={cameraControlsRef} />
-			</ScrollControls>
+			{/* <ScrollControls pages={3}> */}
+			<Jordan cameraContolsRef={cameraControlsRef} />
+			{/* </ScrollControls> */}
 			<Environment preset="city" />
 		</Canvas>
 	);

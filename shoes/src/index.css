@@ -3,10 +3,6 @@
 	margin: 0;
 	box-sizing: border-box;
 }
-.App {
-	height: 100vh;
-	width: 100%;
-	background: #ad5389;
-	background: -webkit-linear-gradient(to right, #3c1053, #ad5389);
-	background: linear-gradient(to right, #3c1053, #ad5389);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
