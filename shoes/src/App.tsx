@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { About } from "./components/About";
 import { CanvasContainer } from "./components/CanvasContainer";
 import { Hero } from "./components/Hero";
+import { BuyNow } from "./components/BuyNow";
 
 function App() {
 	return (
@@ -11,6 +12,7 @@ function App() {
 			</div>
 			<Hero />
 			<About />
+			<BuyNow />
 		</main>
 	);
 }

@@ -24,49 +24,118 @@ export const Jordan = forwardRef<THREE.Group, Props>(
 
 		const { scene, camera } = useThree();
 		const tl = gsap.timeline();
+		const { cameraPosition, scenePosition, sceneRotation } = useControls({
+			cameraPosition: {
+				value: {
+					x: 5,
+					y: 4,
+					z: 2.8,
+				},
+				step: 0.05,
+			},
+			scenePosition: {
+				value: { x: 3.01, y: 0.76, z: 3.7 },
+				step: 0.05,
+			},
 
-		useEffect(() => {
+			sceneRotation: {
+				value: { x: -0.53, y: -3.48, z: -0.21 },
+				step: 0.01,
+			},
+		});
+		useLayoutEffect(() => {
 			new ScrollTrigger({});
 
 			tl.to(camera.position, {
-				x: 3.696822917859152,
-				y: 2.0570648144306634,
-				z: 2.159741804758821,
+				x: 5,
+				y: 4.0,
+				z: 2.8,
 				scrollTrigger: {
-					trigger: ".second",
+					trigger: ".second-section",
 					start: "top bottom",
 					end: "top top",
 					scrub: true,
 					immediateRender: false,
 				},
-			});
-			tl.to(scene.position, {
-				x: -3,
-				y: -3,
-				z: 1,
-				scrollTrigger: {
-					trigger: ".second",
-					start: "top bottom",
-					end: "top top",
-					scrub: true,
-					immediateRender: false,
-				},
-			});
+			})
+				.to(scene.position, {
+					x: 3.01,
+					y: 0.76,
+					z: 3.7,
+					scrollTrigger: {
+						trigger: ".second-section",
+						start: "top bottom",
+						end: "top top",
+						scrub: true,
+						immediateRender: false,
+					},
+				})
+
+				.to(scene.rotation, {
+					x: -0.53,
+					y: -3.48,
+					z: -0.21,
+					scrollTrigger: {
+						trigger: ".second-section",
+						start: "top bottom",
+						end: "top top",
+						scrub: true,
+						immediateRender: false,
+					},
+				})
+
+				// component - BuyNow.tsx
+				.to(camera.position, {
+					x: 5,
+					y: 3.8,
+					z: 2.8,
+					scrollTrigger: {
+						trigger: ".third-section",
+						start: "top bottom",
+						end: "top top",
+						scrub: true,
+						immediateRender: false,
+					},
+				})
+				.to(scene.position, {
+					x: 2.31,
+					y: 0.01,
+					z: -0.7,
+					scrollTrigger: {
+						trigger: ".third-section",
+						start: "top bottom",
+						end: "top top",
+						scrub: true,
+						immediateRender: false,
+					},
+				})
+				.to(scene.rotation, {
+					x: 0.67,
+					y: -12.9,
+					z: 0.79,
+					scrollTrigger: {
+						trigger: ".third-section",
+						start: "top bottom",
+						end: "top top",
+						scrub: true,
+						immediateRender: false,
+					},
+				});
 		}, []);
-		useFrame(() => {
-			// tl.to(camera.position, {
-			// 	x: 3.696822917859152,
-			// 	y: 2.0570648144306634,
-			// 	z: 2.159741804758821,
-			// 	scrollTrigger: {
-			// 		trigger: ".second",
-			// 		start: "top bottom",
-			// 		end: "top top",
-			// 		scrub: true,
-			// 		immediateRender: false,
-			// 	},
-			// });
-		});
+
+		// used for debug
+		// useFrame(() => {
+		// 	camera.position.x = cameraPosition.x;
+		// 	camera.position.y = cameraPosition.y;
+		// 	camera.position.z = cameraPosition.z;
+		// 	scene.position.x = scenePosition.x;
+		// 	scene.position.y = scenePosition.y;
+		// 	scene.position.z = scenePosition.z;
+		// 	scene.rotation.x = sceneRotation.x;
+		// 	scene.rotation.y = sceneRotation.y;
+		// 	scene.rotation.z = sceneRotation.z;
+		// });
+
 		return (
 			<>
 				<directionalLight
@@ -77,7 +146,7 @@ export const Jordan = forwardRef<THREE.Group, Props>(
 
 				<group
 					ref={jordans}
-					position={[1.5, 1, 0]}
+					position={[2, 1, -1]}
 					castShadow
 					scale={10}
 					rotation-x={[-Math.PI * 0.5]}
