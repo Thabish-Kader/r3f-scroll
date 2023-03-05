@@ -1,9 +1,7 @@
-import React from "react";
-
 export const Hero = () => {
 	return (
 		<section className="h-screen relative bg-black ">
-			<div className="absolute top-[40%] left-20">
+			<div className="absolute top-[40%] left-20 z-20">
 				<h1 className="text-5xl text-yellow-800 font-mynerver font-bold">
 					Air Not-So-Jordans
 				</h1>
@@ -18,7 +16,15 @@ export const Hero = () => {
 					go ahead, rock these kicks with pride and let everyone know
 					that you're frugal and fashionable all at once.
 				</p>
-				<button className="bg-yellow-800 p-2 rounded-lg text-white mt-5">
+
+				<button
+					onClick={() =>
+						alert(
+							"I wont take you there scroll down for yourself. Sheesh!!"
+						)
+					}
+					className="bg-yellow-800 p-2 rounded-lg text-white mt-5 hover:bg-green-500 hover:scale-110 hover:text-white transition duration-500"
+				>
 					Enlighten Me
 				</button>
 			</div>

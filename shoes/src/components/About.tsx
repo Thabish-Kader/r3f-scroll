@@ -2,7 +2,10 @@ import React from "react";
 
 export const About = () => {
 	return (
-		<section className="second-section h-screen bg-black relative">
+		<section
+			id="about"
+			className="second-section h-screen bg-black relative"
+		>
 			{/* glowing background */}
 			<div className="h-[500px]  w-full bg-yellow-800 animate-pulse rotate-[10deg] skew-x-12"></div>
 			{/* text */}
