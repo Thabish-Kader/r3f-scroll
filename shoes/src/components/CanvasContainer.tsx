@@ -1,19 +1,11 @@
 import { Canvas } from "@react-three/fiber";
-
 import { Jordan } from "./Jordan";
-import {
-	CameraControls,
-	Environment,
-	OrbitControls,
-	Plane,
-	PresentationControls,
-	ScrollControls,
-} from "@react-three/drei";
-import { useEffect, useRef } from "react";
-import { Annotation } from "./Annotation";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Scroller from "./Scroller";
+import { Suspense } from "react";
+import { Loading } from "./Loading";
+// without registering scrolltriiger the model will break
 gsap.registerPlugin(ScrollTrigger);
 
 export const CanvasContainer = () => {
@@ -31,10 +23,9 @@ export const CanvasContainer = () => {
 				enableRotate={false}
 				enableZoom={false}
 			/>
-
-			<Jordan />
-			<Scroller />
-
+			<Suspense fallback={<Loading />}>
+				<Jordan />
+			</Suspense>
 			<Environment preset="city" />
 		</Canvas>
 	);

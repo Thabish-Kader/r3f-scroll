@@ -8,10 +8,10 @@ import React, {
 } from "react";
 import { JordanGLTF } from "../typings";
 import { useControls } from "leva";
-import { extend, useFrame, useThree } from "@react-three/fiber";
-import * as THREE from "three";
+import { useThree } from "@react-three/fiber";
+
 import { gsap } from "gsap";
-import { scrollerConfig } from "./Scroller";
+
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // Source : https://sketchfab.com/3d-models/air-jordan-1-a4b434181fbb48008ad460722fd53725
