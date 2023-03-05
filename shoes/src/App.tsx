@@ -7,8 +7,8 @@ import { Header } from "./components/Header";
 
 function App() {
 	return (
-		<main className="">
-			<div className="h-screen w-full fixed top-0 z-50">
+		<main className="overflow-x-hidden">
+			<div className="h-screen w-full fixed top-0 z-50 hidden lg:block">
 				<CanvasContainer />
 			</div>
 			<Header />
