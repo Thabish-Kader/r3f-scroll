@@ -2,8 +2,8 @@ import React from "react";
 
 export const BuyNow = () => {
 	return (
-		<section className="third-section h-screen bg-black relative">
-			<div className="absolute top-[30%] left-24 flex flex-col justify-center border border-yellow-800 text-yellow-800 p-5 rounded-lg">
+		<section className="third-section h-screen bg-black relative ">
+			<div className="z-20 absolute top-[30%] left-24 flex flex-col justify-center border border-yellow-800 text-yellow-800 p-5 rounded-lg">
 				<h1 className="font-bold font-rubix text-5xl">
 					Fake It Till You Make It
 				</h1>

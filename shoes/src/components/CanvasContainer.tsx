@@ -17,8 +17,6 @@ import Scroller from "./Scroller";
 gsap.registerPlugin(ScrollTrigger);
 
 export const CanvasContainer = () => {
-	const shoes = useRef<THREE.Group>(null);
-
 	return (
 		<Canvas
 			camera={{
@@ -34,7 +32,7 @@ export const CanvasContainer = () => {
 				enableZoom={false}
 			/>
 
-			<Jordan ref={shoes} />
+			<Jordan />
 			<Scroller />
 
 			<Environment preset="city" />
