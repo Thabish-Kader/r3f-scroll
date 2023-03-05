@@ -17,6 +17,13 @@
 
 Project created to learn gsap in react three fiber for scroll based animation
 
+<img width="1662" alt="Screenshot 2023-03-05 at 12 42 57 PM" src="https://user-images.githubusercontent.com/76642519/222950730-214ca861-db1b-4913-a87d-aa0188261bac.png">
+
+<img width="1662" alt="Screenshot 2023-03-05 at 12 43 31 PM" src="https://user-images.githubusercontent.com/76642519/222950733-528dbb84-e4ae-47a4-8ab8-0a1dd98744c3.png">
+
+<img width="1664" alt="Screenshot 2023-03-05 at 12 43 49 PM" src="https://user-images.githubusercontent.com/76642519/222950736-a433c3cb-01d4-4fb1-a09d-1aa187e41aa5.png">
+
+
 # Skills Acquired
 
 -   GSAP
