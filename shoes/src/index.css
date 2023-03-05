@@ -1,8 +1,5 @@
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rubik+Iso&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Mynerve&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

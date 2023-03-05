@@ -7,10 +7,10 @@ import { Header } from "./components/Header";
 
 function App() {
 	return (
-		<main>
-			{/* <div className="h-screen w-full fixed top-0 overflow-x-hidden ">
+		<main className="">
+			<div className="h-screen w-full fixed top-0 z-50">
 				<CanvasContainer />
-			</div> */}
+			</div>
 			<Header />
 			<Hero />
 			<About />
